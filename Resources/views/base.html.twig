@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="keywords" content="{{ block('meta_keywords') }}">
-        <meta name="description" content="{{ block('meta_description') }}">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ block('meta_title') }} - {{ block('brand') }}</title>
-        {{ block('css') }}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        {% block head %}
+            <meta charset="utf-8">
+            <meta name="description" content="{{ block('meta_description') }}">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>{% block meta_title_content %}{{ block('meta_title') }} - {{ block('brand') }}{% endblock %}</title>
+            {{ block('css') }}
+            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        {% endblock %}
     </head>
     <body>
         {{ block('body') }}
